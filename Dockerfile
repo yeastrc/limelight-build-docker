@@ -16,8 +16,9 @@ RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
 ENV PATH ${PATH}:/usr/local/gradle-$GRADLE_VERSION/bin
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-    apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install --global npm@7
 
 # Install gradle
 RUN wget https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip && \
