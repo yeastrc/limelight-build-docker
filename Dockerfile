@@ -22,9 +22,6 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 #   * https://deb.nodesource.com/setup_20.x — Node.js 20 "Iron" (current)
 
-#  when run 'npm'   npm notice New minor version of npm available! 10.2.4 -> 10.3.0
-
-
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
