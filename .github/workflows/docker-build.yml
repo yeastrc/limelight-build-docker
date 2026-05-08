@@ -1,0 +1,33 @@
+name: Docker Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          load: true
+          tags: limelight-build:ci
+
+      - name: Verify tools in image
+        run: |
+          docker run --rm limelight-build:ci java -version
+          docker run --rm limelight-build:ci node --version
+          docker run --rm limelight-build:ci npm --version
+          docker run --rm limelight-build:ci ant -version
