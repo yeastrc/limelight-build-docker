@@ -3,9 +3,8 @@
 
 #   if existing command not work to build docker image, see https://docs.docker.com/go/buildx/
 
-FROM ubuntu:jammy
 
-# 'jammy' is Ubuntu 22.04 
+FROM ubuntu:24.04
 
 # Gradle is downloaded via Gradle Wrapper in Limelight Core so NO need to add here
 
@@ -20,10 +19,10 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 #  https://nodejs.org/en/about/previous-releases
 
-#   * https://deb.nodesource.com/setup_20.x — Node.js 20 "Iron" (current)
+#   * https://deb.nodesource.com/setup_24.x — Node.js 24
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_24.x | bash - && \
     apt-get install -y nodejs && \
-    npm install --global npm@10.3.0
+    npm install --global npm@11.12.1
     
