@@ -28,6 +28,9 @@ jobs:
       - name: Verify tools in image
         run: |
           docker run --rm limelight-build:ci java -version
+          docker run --rm limelight-build:ci /usr/lib/jvm/corretto-8/bin/javac -version
+          docker run --rm limelight-build:ci /usr/lib/jvm/corretto-25/bin/javac -version
+          docker run --rm limelight-build:ci ls -1 /usr/lib/jvm
           docker run --rm limelight-build:ci node --version
           docker run --rm limelight-build:ci npm --version
           docker run --rm limelight-build:ci ant -version
